@@ -2,6 +2,11 @@ package com.anderson.backend.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+
 
 @Entity
 public class Ativo {
@@ -9,7 +14,7 @@ public class Ativo {
     // tais como (id, nome, tipo, status, dataCadastro, numero, setor)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String nome;
 
@@ -26,6 +31,11 @@ public class Ativo {
     @ManyToOne
     @JoinColumn(name = "setor_id")
     private Setor setor;
+
+    @OneToMany(mappedBy = "ativo")
+    @JsonManagedReference
+    private List<ManutencaoPreventiva> manutencoesPreventivas;
+
 
     //Construtor permite "montar" um ativo sempre que for chamado.
     public Ativo() {
@@ -53,5 +63,8 @@ public class Ativo {
 
     public Setor getSetor() {return setor;}
     public void setSetor(Setor setor) {this.setor = setor;}
+
+    public List<ManutencaoPreventiva> getManutencoesPreventivas() {return manutencoesPreventivas;}
+    public void setManutencoesPreventivas(List<ManutencaoPreventiva> manutencoesPreventivas) {this.manutencoesPreventivas = manutencoesPreventivas;}
 
 }
