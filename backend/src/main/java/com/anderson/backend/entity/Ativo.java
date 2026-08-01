@@ -36,6 +36,10 @@ public class Ativo {
     @JsonManagedReference
     private List<ManutencaoPreventiva> manutencoesPreventivas;
 
+    @OneToMany(mappedBy = "ativo")
+    @JsonManagedReference
+    private List<OrdemServico> ordensServico;
+
 
     //Construtor permite "montar" um ativo sempre que for chamado.
     public Ativo() {
@@ -67,4 +71,6 @@ public class Ativo {
     public List<ManutencaoPreventiva> getManutencoesPreventivas() {return manutencoesPreventivas;}
     public void setManutencoesPreventivas(List<ManutencaoPreventiva> manutencoesPreventivas) {this.manutencoesPreventivas = manutencoesPreventivas;}
 
+    public List<OrdemServico> getOrdensServico() {return ordensServico;}
+    public void setOrdensServico(List<OrdemServico> ordensServico) {this.ordensServico = ordensServico;}
 }
