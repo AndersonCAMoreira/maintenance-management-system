@@ -2,6 +2,7 @@ package com.anderson.backend.controller;
 
 import com.anderson.backend.entity.ManutencaoPreventiva;
 import com.anderson.backend.repository.ManutencaoPreventivaRepository;
+import com.anderson.backend.service.ManutencaoPreventivaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,15 +11,17 @@ import java.util.List;
 @RequestMapping("/manutencoes-preventivas")
 public class ManutencaoPreventivaController {
 
+    private final ManutencaoPreventivaService manutencaoPreventivaService;
     private final ManutencaoPreventivaRepository manutencaoPreventivaRepository;
 
-    public ManutencaoPreventivaController(ManutencaoPreventivaRepository manutencaoPreventivaRepository) {
+    public ManutencaoPreventivaController(ManutencaoPreventivaService manutencaoPreventivaService, ManutencaoPreventivaRepository manutencaoPreventivaRepository) {
+        this.manutencaoPreventivaService = manutencaoPreventivaService;
         this.manutencaoPreventivaRepository = manutencaoPreventivaRepository;
     }
 
     @PostMapping
     public ManutencaoPreventiva criar(@RequestBody ManutencaoPreventiva manutencaoPreventiva) {
-        return manutencaoPreventivaRepository.save(manutencaoPreventiva);
+        return manutencaoPreventivaService.salvar(manutencaoPreventiva);
     }
 
     @GetMapping
