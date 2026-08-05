@@ -1,9 +1,8 @@
 package com.anderson.backend.controller;
 
-import com.anderson.backend.entity.Ativo;
-import com.anderson.backend.repository.AtivoRepository;
+import com.anderson.backend.dto.AtivoDTO;
+import com.anderson.backend.service.AtivoService;
 import org.springframework.web.bind.annotation.*;
-import com.anderson.backend.entity.StatusAtivo;
 
 import java.util.List;
 
@@ -11,25 +10,25 @@ import java.util.List;
 @RequestMapping("/ativos")
 public class AtivoController {
 
-    private final AtivoRepository ativoRepository;
+    private final AtivoService ativoService;
 
-    public AtivoController(AtivoRepository ativoRepository) {
-        this.ativoRepository = ativoRepository;
+    public AtivoController(AtivoService ativoService) {
+        this.ativoService = ativoService;
     }
 
     @PostMapping
-    public Ativo criar(@RequestBody Ativo ativo) {
-        return ativoRepository.save(ativo);
+    public AtivoDTO criar(@RequestBody AtivoDTO ativoDTO) {
+        return ativoService.criar(ativoDTO);
     }
 
     @GetMapping
-    public List<Ativo> listar() {
-        return ativoRepository.findAll();
+    public List<AtivoDTO> listar() {
+        return ativoService.listar();
     }
 
     @GetMapping("/operantes")
-    public List<Ativo> listarOperantes() {
-        return ativoRepository.findByStatus(StatusAtivo.OPERANTE);
+    public List<AtivoDTO> listarOperantes() {
+        return ativoService.listarOperantes();
     }
 
 }
