@@ -2,6 +2,9 @@ package com.anderson.backend.controller;
 
 import com.anderson.backend.dto.ManutencaoPreventivaDTO;
 import com.anderson.backend.service.ManutencaoPreventivaService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class ManutencaoPreventivaController {
     }
 
     @PostMapping
-    public ManutencaoPreventivaDTO criar(@RequestBody ManutencaoPreventivaDTO dto) {
+    public ManutencaoPreventivaDTO criar(@Valid @RequestBody ManutencaoPreventivaDTO dto) {
         return manutencaoPreventivaService.criar(dto);
     }
 

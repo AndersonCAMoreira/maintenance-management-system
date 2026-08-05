@@ -2,6 +2,9 @@ package com.anderson.backend.controller;
 
 import com.anderson.backend.dto.AtivoDTO;
 import com.anderson.backend.service.AtivoService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class AtivoController {
     }
 
     @PostMapping
-    public AtivoDTO criar(@RequestBody AtivoDTO ativoDTO) {
+    public AtivoDTO criar(@Valid @RequestBody AtivoDTO ativoDTO) {
         return ativoService.criar(ativoDTO);
     }
 

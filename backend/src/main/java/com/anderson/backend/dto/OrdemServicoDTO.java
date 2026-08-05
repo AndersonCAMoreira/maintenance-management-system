@@ -1,15 +1,27 @@
 package com.anderson.backend.dto;
 
 import com.anderson.backend.entity.StatusOS;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 public class OrdemServicoDTO {
 
     private Long id;
+
+    @NotNull(message = "O status é obrigatório")
     private StatusOS status;
+
+    @NotNull(message = "O ativo é obrigatório")
     private Long ativoId;
+
+    @NotBlank(message = "O nome do solicitante é obrigatório")
     private String nomeSolicitante;
     private String observacoes;
+
+    @NotNull(message = "A data de abertura é obrigatória")
     private LocalDateTime dataAbertura;
     private LocalDateTime dataConclusao;
 

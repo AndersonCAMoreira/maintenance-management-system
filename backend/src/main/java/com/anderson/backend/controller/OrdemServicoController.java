@@ -2,6 +2,9 @@ package com.anderson.backend.controller;
 
 import com.anderson.backend.dto.OrdemServicoDTO;
 import com.anderson.backend.service.OrdemServicoService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class OrdemServicoController {
     }
 
     @PostMapping
-    public OrdemServicoDTO criar(@RequestBody OrdemServicoDTO dto) {
+    public OrdemServicoDTO criar(@Valid @RequestBody OrdemServicoDTO dto) {
         return ordemServicoService.criar(dto);
     }
 

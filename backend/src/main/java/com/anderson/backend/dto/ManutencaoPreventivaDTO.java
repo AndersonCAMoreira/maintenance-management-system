@@ -2,15 +2,28 @@ package com.anderson.backend.dto;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 public class ManutencaoPreventivaDTO {
 
     private Long id;
+
+    @NotNull(message = "O ativo é obrigatório")
     private Long ativoId;
+
+    @NotBlank(message = "O nome da manutenção preventiva é obrigatório")
     private String nome;
-    private String observacoes;
+
+    private String observacoes; // Opcional
+
+    @NotNull(message = "A periodicidade em dias é obrigatória")
+    @Positive(message = "A periodicidade deve ser maior que zero")
     private Integer periodicidadeDias;
-    private LocalDate dataUltimaExecucao;
-    private LocalDate dataProximaExecucao;
+
+    private LocalDate dataUltimaExecucao; // Opcional
+    private LocalDate dataProximaExecucao; // É calculado
 
     public ManutencaoPreventivaDTO() {
     }

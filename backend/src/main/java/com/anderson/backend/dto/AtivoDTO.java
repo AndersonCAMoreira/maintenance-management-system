@@ -1,6 +1,11 @@
 package com.anderson.backend.dto;
 
 import com.anderson.backend.entity.TipoAtivo;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import com.anderson.backend.entity.StatusAtivo;
 import java.time.LocalDate;
 import java.util.List;
@@ -8,12 +13,25 @@ import java.util.List;
 public class AtivoDTO {
 
     private Long id;
+
+    @NotBlank(message = "O nome do ativo é obrigatório")
     private String nome;
+
+    @NotNull(message = "O tipo do ativo é obrigatório")
     private TipoAtivo tipo;
+
+    @NotNull(message = "O status do ativo é obrigatório")
     private StatusAtivo status;
+
+    @NotNull(message = "A data de cadastro é obrigatória")
     private LocalDate dataCadastro;
-    private String numero;
+
+    private String numero; // Opcional 
+
+    @NotNull(message = "O setor é obrigatório")
+    @Valid
     private SetorDTO setor;
+
     private List<ManutencaoPreventivaDTO> manutencoesPreventivas;
     private List<OrdemServicoDTO> ordensServico;
 
