@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class ManutencaoPreventivaDTO {
 
     private Long id;
+    private Long ativoId;
     private String nome;
     private String observacoes;
     private Integer periodicidadeDias;
@@ -32,4 +33,6 @@ public class ManutencaoPreventivaDTO {
     public LocalDate getDataProximaExecucao() {return dataProximaExecucao;}
     public void setDataProximaExecucao(LocalDate dataProximaExecucao) {this.dataProximaExecucao = dataProximaExecucao;}
 
+    public Long getAtivoId() {return ativoId;}
+    public void setAtivoId(Long ativoId) {this.ativoId = ativoId;}
 }
