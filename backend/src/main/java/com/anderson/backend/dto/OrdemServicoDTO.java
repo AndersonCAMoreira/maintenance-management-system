@@ -7,6 +7,7 @@ public class OrdemServicoDTO {
 
     private Long id;
     private StatusOS status;
+    private Long ativoId;
     private String nomeSolicitante;
     private String observacoes;
     private LocalDateTime dataAbertura;
@@ -33,4 +34,6 @@ public class OrdemServicoDTO {
     public LocalDateTime getDataConclusao() {return dataConclusao;}
     public void setDataConclusao(LocalDateTime dataConclusao) {this.dataConclusao = dataConclusao;}
 
+    public Long getAtivoId() {return ativoId;}
+    public void setAtivoId(Long ativoId) {this.ativoId = ativoId;}
 }

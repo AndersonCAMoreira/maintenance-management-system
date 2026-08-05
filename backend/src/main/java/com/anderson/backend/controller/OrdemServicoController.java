@@ -1,7 +1,7 @@
 package com.anderson.backend.controller;
 
-import com.anderson.backend.entity.OrdemServico;
-import com.anderson.backend.repository.OrdemServicoRepository;
+import com.anderson.backend.dto.OrdemServicoDTO;
+import com.anderson.backend.service.OrdemServicoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,20 +10,20 @@ import java.util.List;
 @RequestMapping("/ordens-servico")
 public class OrdemServicoController {
 
-    private final OrdemServicoRepository ordemServicoRepository;
+    private final OrdemServicoService ordemServicoService;
 
-    public OrdemServicoController(OrdemServicoRepository ordemServicoRepository) {
-        this.ordemServicoRepository = ordemServicoRepository;
+    public OrdemServicoController(OrdemServicoService ordemServicoService) {
+        this.ordemServicoService = ordemServicoService;
     }
 
     @PostMapping
-    public OrdemServico criar(@RequestBody OrdemServico ordemServico) {
-        return ordemServicoRepository.save(ordemServico);
+    public OrdemServicoDTO criar(@RequestBody OrdemServicoDTO dto) {
+        return ordemServicoService.criar(dto);
     }
 
     @GetMapping
-    public List<OrdemServico> listar() {
-        return ordemServicoRepository.findAll();
+    public List<OrdemServicoDTO> listar() {
+        return ordemServicoService.listar();
     }
 
 }
