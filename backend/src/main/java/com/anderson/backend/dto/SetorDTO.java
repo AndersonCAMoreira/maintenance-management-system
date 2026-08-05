@@ -1,9 +1,15 @@
 package com.anderson.backend.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class SetorDTO {
 
     private Long id;
+    
+    @NotBlank(message = "O nome do setor é obrigatório")
     private String nome;
+
+    @NotBlank(message = "A tag do setor é obrigatória")
     private String tag;
 
     public SetorDTO() {
