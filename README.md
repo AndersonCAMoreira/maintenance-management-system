@@ -1,3 +1,5 @@
+⚠️ Projeto em Andamento ⚠️
+
 # maintenance-management-system
 
 Sistema de gestão de manutenção industrial com duas frentes de acesso:
